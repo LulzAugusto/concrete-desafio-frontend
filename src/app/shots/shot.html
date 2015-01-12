@@ -1,0 +1,23 @@
+<section class="shot">
+    <div class="shot-picture">
+        <div class="image">
+            <img ng-src="{{shot.model.getImageUrl()}}" alt="shot image"/>
+            <div class="image-info">
+                <span class="image-info-name">{{shot.model.title}}</span>
+                <span class="image-info-viewcount">
+                    <span class="fa fa-eye"></span> {{shot.model.views_count}}
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="shot-user">
+        <img class="shot-user-avatar" ng-src="{{shot.model.user.avatar_url}}" alt="user avatar"/>
+        <span class="shot-user-name">{{shot.model.user.name}}</span>
+    </div><br/>
+    <div class="shot-description clear" ng-bind-html="shot.model.getDescription()"></div>
+</section>
+<br/>
+<button class="button" ng-click="shot.goToList()">
+    <span class="fa fa-arrow-left"></span>
+    Back
+</button>

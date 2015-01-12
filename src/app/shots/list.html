@@ -1,0 +1,21 @@
+<ul class="shot-list" infinite-scroll="list.paginate()" infinite-scroll-distance="3">
+    <li class="shot-list-item" ng-repeat="shot in list.shots">
+        <a ng-href="#/{{shot.id}}">
+            <div class="image">
+                <img ng-src="{{shot.getImageUrl()}}" alt="shot image"/>
+                <div class="image-info">
+                    <span class="image-info-name">{{shot.title}}</span>
+                    <span class="image-info-viewcount">
+                        <span class="fa fa-eye"></span> {{shot.views_count}}
+                    </span>
+                </div>
+            </div>
+        </a>
+    </li>
+</ul>
+<div class="pagination">
+    <button type="button" class="button" ng-click="list.debouncePaginate()">
+        More <br />
+        <span class="fa fa-arrow-down"></span>
+    </button>
+</div>
