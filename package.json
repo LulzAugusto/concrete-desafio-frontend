@@ -16,7 +16,7 @@
     "url": "https://github.com/LulzAugusto/concrete-desafio-frontend/issues"
   },
   "homepage": "https://github.com/LulzAugusto/concrete-desafio-frontend",
-  "dependencies": {
+  "devDependencies": {
     "connect": "^3.3.4",
     "connect-livereload": "^0.5.2",
     "gulp-autoprefixer": "^2.0.0",

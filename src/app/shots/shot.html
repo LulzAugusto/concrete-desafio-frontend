@@ -1,14 +1,6 @@
 <section class="shot">
     <div class="shot-picture">
-        <div class="image">
-            <img ng-src="{{shot.model.getImageUrl()}}" alt="shot image"/>
-            <div class="image-info">
-                <span class="image-info-name">{{shot.model.title}}</span>
-                <span class="image-info-viewcount">
-                    <span class="fa fa-eye"></span> {{shot.model.views_count}}
-                </span>
-            </div>
-        </div>
+        <cs-shots-image shot="shot.model"></cs-shots-image>
     </div>
     <div class="shot-user">
         <img class="shot-user-avatar" ng-src="{{shot.model.user.avatar_url}}" alt="user avatar"/>
