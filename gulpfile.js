@@ -27,7 +27,9 @@ gulp.task('styles', function() {
 			'sourcemap=none': true
 		}))
 		.pipe($.autoprefixer({browsers: AUTOPREFIXER_BROWSERS}))
-		.pipe(gulp.dest('.tmp/styles'));
+		.pipe(gulp.dest('.tmp/styles'))
+		.pipe($.minifyCss())
+		.pipe(gulp.dest('dist/styles'));
 });
 
 gulp.task('jshint', function() {
@@ -71,4 +73,36 @@ gulp.task('watch', function() {
 
 	gulp.watch(['src/assets/css/**/*.{scss,css}'], ['styles']);
 	gulp.watch(['src/app/**/*.js'], ['jshint']);
+});
+
+gulp.task('js', function() {
+	return gulp.src([
+			'bower_components/angular/angular.js',
+			'bower_components/angular-animate/angular-animate.js',
+			'bower_components/angular-route/angular-route.js',
+			'src/app/**/*.module.js',
+			'.tmp/templates/*.js',
+			'src/app/**/*.js'
+		])
+		.pipe($.ngAnnotate())
+		.pipe($.concat('app.min.js'))
+		.pipe($.uglify())
+		.pipe(gulp.dest('dist/js'));
+});
+
+gulp.task('templates', function() {
+	return gulp.src('src/app/**/*.html')
+		.pipe($.angularTemplatecache('templates.js', {
+			module: 'app.core',
+			root: 'app'
+			// standalone: true
+		}))
+		.pipe(gulp.dest('.tmp/templates'));
+});
+
+gulp.task('html', function() {
+	return gulp.src('src/index.html')
+		.pipe($.inject(gulp.src('dist/js/*.js', {read: false}), {relative: true, ignorePath: '../dist'}))
+		.pipe($.minifyHtml())
+		.pipe(gulp.dest('dist'));
 });

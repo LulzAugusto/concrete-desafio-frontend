@@ -6,16 +6,19 @@
 
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.2/normalize.min.css">
+
     <link rel="stylesheet" href="styles/styles.css">
 
 	<title>Concrete - Desafio Front-End</title>
 </head>
-<body ng-app="app">
+<body ng-app="app" ng-strict-di>
     <main ng-view>
     </main>
+
+    <!-- inject:js -->
     <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
-    <script src="bower_components/angular-route/angular-route.min.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
 
     <script src="app/app.module.js"></script>
 
@@ -29,5 +32,6 @@
     <script src="app/shots/list.controller.js"></script>
     <script src="app/shots/shot.controller.js"></script>
     <script src="app/shots/image.directive.js"></script>
+    <!-- endinject -->
 </body>
 </html>
